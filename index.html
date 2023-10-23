@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="date" name="birthdate">
+    <button id="Calculer">Calculer</button>
+
+    <div id="age">
+    </div>
+    <script>
+        const Calculerbtn = document.getElementById("Calculer")
+        const agediv = document.getElementById("age")
+
+        Calculer.addEventListener("click", () => {
+            const birthdateinpit = document.getElementsByName("birthdate")[0];
+            const birthdate = new Date(birthdateinpit.value);
+            const now = new Date();
+
+            if (birthdateinpit.value === "") {
+                alert("veuillez saisir une date valide")
+            } else if (now < birthdate  ){
+                alert("mazal matzaditich") 
+            }else {
+                const agemilliseconds= now - birthdate;
+                const ageseconds = Math.floor(agemilliseconds/1000);
+                const ageminutes=Math.floor(ageseconds/60);
+                const agehours=Math.floor(ageminutes/60);
+                const agedays=Math.floor(agehours/24);
+                const agemonths=Math.floor(agedays/30);
+                const ageyears= Math.floor(agemonths/365);
+
+            agediv.textContent= 'votre age et de ${ageyears} ans (${agedays} jours)';
+
+            }
+        });
+    </script>
+</body>
+
+</html>
